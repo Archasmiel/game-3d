@@ -1,0 +1,4 @@
+package geometry
+
+class NormalModel {
+}

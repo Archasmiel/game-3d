@@ -7,7 +7,7 @@ version = "1.0-SNAPSHOT"
 
 val lwjglVersion = "3.3.6"
 val jomlVersion = "1.10.8"
-val lwjglNatives = "natives-windows"
+val lwjglNatives = "natives-linux"
 
 repositories {
     mavenCentral()
@@ -47,7 +47,6 @@ dependencies {
     implementation("org.lwjgl", "lwjgl-openvr")
     implementation("org.lwjgl", "lwjgl-openxr")
     implementation("org.lwjgl", "lwjgl-opus")
-    implementation("org.lwjgl", "lwjgl-ovr")
     implementation("org.lwjgl", "lwjgl-par")
     implementation("org.lwjgl", "lwjgl-remotery")
     implementation("org.lwjgl", "lwjgl-rpmalloc")
@@ -88,7 +87,6 @@ dependencies {
     implementation ("org.lwjgl", "lwjgl-openvr", classifier = lwjglNatives)
     implementation ("org.lwjgl", "lwjgl-openxr", classifier = lwjglNatives)
     implementation ("org.lwjgl", "lwjgl-opus", classifier = lwjglNatives)
-    implementation ("org.lwjgl", "lwjgl-ovr", classifier = lwjglNatives)
     implementation ("org.lwjgl", "lwjgl-par", classifier = lwjglNatives)
     implementation ("org.lwjgl", "lwjgl-remotery", classifier = lwjglNatives)
     implementation ("org.lwjgl", "lwjgl-rpmalloc", classifier = lwjglNatives)
