@@ -20,6 +20,10 @@ import InputCallbacks.yaw
 
 class Game {
 
+    companion object {
+        val quadLoader = QuadModelLoader()
+    }
+
     private var window: Long = 0L
 
     private val viewPos = Vector3f(0f, 0f, 15f)
@@ -132,8 +136,9 @@ class Game {
         if (isKeyHolding(GLFW_KEY_S)) viewPos.fma(speed, moveVectors[2][1])
         if (isKeyHolding(GLFW_KEY_D)) viewPos.fma(speed, moveVectors[0][0])
         if (isKeyHolding(GLFW_KEY_A)) viewPos.fma(speed, moveVectors[0][1])
-        if (isKeyHolding(GLFW_KEY_E)) viewPos.fma(speed, moveVectors[1][0])
-        if (isKeyHolding(GLFW_KEY_Q)) viewPos.fma(speed, moveVectors[1][1])
+
+        if (isKeyHolding(GLFW_KEY_LEFT_SHIFT)) viewPos.fma(speed, moveVectors[1][1])
+        if (isKeyHolding(GLFW_KEY_SPACE)) viewPos.fma(speed, moveVectors[1][0])
     }
 
     private fun loop() {
