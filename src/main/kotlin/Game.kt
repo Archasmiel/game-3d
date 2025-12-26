@@ -16,6 +16,7 @@ import InputCallbacks.mouseCallback
 import InputCallbacks.isKeyHolding
 import InputCallbacks.pitch
 import InputCallbacks.yaw
+import loader.QuadModelLoader
 
 
 class Game {
@@ -162,10 +163,10 @@ class Game {
 
         var lastTime = glfwGetTime()
 
-        val cubes = mutableListOf<Cube>()
+        val modelObjects = mutableListOf<ModelObject>()
         for (i in 0..5) {
             for (j in 0..5) {
-                cubes.add(Cube(Vector3f(i.toFloat()*2, 0f, j.toFloat()*2)))
+                modelObjects.add(ModelObject(Vector3f(i.toFloat()*2, 0f, j.toFloat()*2)))
             }
         }
 
@@ -187,7 +188,7 @@ class Game {
             glRotatef(yaw, 0f, 1f, 0f)
             glTranslatef(-viewPos.x, -viewPos.y, -viewPos.z)
 
-            cubes.forEach {
+            modelObjects.forEach {
                 it.draw()
             }
 

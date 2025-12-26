@@ -3,9 +3,9 @@ package geometry
 import org.joml.Vector3f
 import org.lwjgl.opengl.GL11.*
 
-data class IndexedFace(val c: Color3f, val vIs: List<Int>)
+data class IndexedFace(val c: Vector3f, val vIs: List<Int>)
 
-data class IndexedModel(val vs: List<Vertex3f>, val faces: List<IndexedFace>) {
+data class IndexedModel(val vs: List<Vector3f>, val faces: List<IndexedFace>) {
 
     fun draw(pos: Vector3f, rot: Vector3f) {
         glPushMatrix()
@@ -18,7 +18,7 @@ data class IndexedModel(val vs: List<Vertex3f>, val faces: List<IndexedFace>) {
         glBegin(GL_QUADS)
 
         faces.forEach { face ->
-            glColor3f(face.c.r, face.c.g, face.c.b)
+            glColor3f(face.c.x, face.c.y, face.c.z)
             face.vIs.forEach { i ->
                 glVertex3f(vs[i].x, vs[i].y, vs[i].z)
             }

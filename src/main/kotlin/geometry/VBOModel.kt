@@ -26,9 +26,9 @@ class VBOModel(model: IndexedModel) {
                 vBuf[i + 1] = v.y
                 vBuf[i + 2] = v.z
 
-                cBuf[i]     = face.c.r
-                cBuf[i + 1] = face.c.g
-                cBuf[i + 2] = face.c.b
+                cBuf[i]     = face.c.x
+                cBuf[i + 1] = face.c.y
+                cBuf[i + 2] = face.c.z
 
                 i += 3
             }
