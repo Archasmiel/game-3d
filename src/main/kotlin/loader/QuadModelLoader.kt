@@ -8,11 +8,9 @@ import geometry.VBOModel
 import org.joml.Vector3f
 import java.io.File
 
-class QuadModelLoader {
+object QuadModelLoader {
 
-    companion object {
-        val v3fRegex = Regex("""[cv]3f\(([-0-9.]+)f?,\s*([-0-9.]+)f?,\s*([-0-9.]+)f?\)""")
-    }
+    val v3fRegex = Regex("""[cv]3f\(([-0-9.]+)f?,\s*([-0-9.]+)f?,\s*([-0-9.]+)f?\)""")
 
     fun normalModel(fileName: String): Model =
          Model(File(fileName).useLines { lines ->
@@ -32,9 +30,10 @@ class QuadModelLoader {
                  .toList()
          })
 
-    fun indexedModel(fileName: String): IndexedModel {
-        val normalModel = normalModel(fileName)
+    fun indexedModel(fileName: String): IndexedModel =
+        indexedModel(normalModel(fileName))
 
+    fun indexedModel(normalModel: Model): IndexedModel {
         val uniqueVerts = ArrayList<Vector3f>()
         val vertMap = HashMap<Vector3f, Int>()  // maps vertex -> index
         val indexedFaces = ArrayList<IndexedFace>(normalModel.faces.size)
@@ -52,6 +51,12 @@ class QuadModelLoader {
 
         return IndexedModel(uniqueVerts, indexedFaces)
     }
+
+    fun vboModel(model: Model): VBOModel =
+        VBOModel(indexedModel(model))
+
+    fun vboModel(model: IndexedModel): VBOModel =
+        VBOModel(model)
 
     fun vboModel(fileName: String): VBOModel =
         VBOModel(indexedModel(fileName))

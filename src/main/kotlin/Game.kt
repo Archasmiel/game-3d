@@ -21,10 +21,6 @@ import loader.QuadModelLoader
 
 class Game {
 
-    companion object {
-        val quadLoader = QuadModelLoader()
-    }
-
     private var window: Long = 0L
 
     private val viewPos = Vector3f(0f, 0f, 15f)

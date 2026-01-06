@@ -1,13 +1,18 @@
+import loader.QbinLoader
+import loader.QuadModelLoader
 import org.joml.Math
 import org.joml.Vector3f
 
 class ModelObject {
 
     companion object {
-        val fileName = "octosphere_quads_1536.txt"
-        val modelNormal = Game.quadLoader.normalModel(fileName)
-        val modelIndexed = Game.quadLoader.indexedModel(fileName)
-        val modelVBO = Game.quadLoader.vboModel(fileName)
+        val fileNameTxt = "./models/octosphere_quads_1536.txt"
+        val modelNormal = QuadModelLoader.normalModel(fileNameTxt)
+        val modelIndexed = QuadModelLoader.indexedModel(fileNameTxt)
+        val modelVBO = QuadModelLoader.vboModel(fileNameTxt)
+
+        val fileNameQbin = "./models/octosphere_quads_1536.qbin"
+        val binModelNormal = QbinLoader.normalModel(fileNameQbin)
 
         init {
             println("${modelNormal.faces.size * 4} ${modelIndexed.vs.size}")
@@ -30,7 +35,7 @@ class ModelObject {
     }
 
     fun draw() {
-        modelVBO.draw(pos, rot)
+        binModelNormal.draw(pos, rot)
     }
 
 }
